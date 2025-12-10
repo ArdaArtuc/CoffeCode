@@ -1,20 +1,3 @@
-# CoffeeCode – Custom Language for MARS-LE
-
-CoffeeCode is a coffee-themed custom assembly language for **MARS-LE**.  
-It adds new instructions (like `BEANS`, `BREW`, `POUR`, `SIP`, `DROP`, etc.) implemented in Java and exposed through MARS-LE’s Language Switcher.
-
-## Structure
-
-- `coffee/mips/instructions/.`
-  - Java classes for each custom instruction (e.g., `BeansInstruction`, `BrewInstruction`, `DropInstruction`, ...)
-- `mars/mips/instructions/customlangs/CoffeCustomLanguage.java`
-  - Registers all CoffeeCode instructions and defines the language `"CoffeeCode` for MARS-LE.
-
-## Build (Windows / PowerShell)
-
-From the MARS-LE root:
-
-```powershell
-javac -d out mars/mips/instructions/customlangs/CoffeCustomLanguage.java coffee/mips/instructions/*.java
-jar cf CoffeCustomLanguage.jar -C out.
-Remove-Item -Recurse -Force out
+CoffeeCode adds the following custom instructions to MARS LE: BEANS, BITTER, BOIL, BREW, BURN, CREAM, DROP, FILTER, FROTH, GRIND, HYPER, MIX, POUR, PRESS, RECHARGE, SCOOP, SIP, SPILL.  
+To run/test them, compile the language with `javac -d out mars/mips/instructions/customlangs/CoffeCustomLanguage.java coffee/mips/instructions/*.java`, then create `CoffeCustomLanguage.jar` via `jar cf CoffeCustomLanguage.jar -C out .` and copy it into `mars/mips/instructions/customlangs/`.  
+Launch MARS LE (`java -jar Mars.jar`), open the Language Switcher, select **CoffeeCode**, then write a small program using the opcodes (e.g., `BEANS $t0, 5`, `BREW $t1, $t0`, `DROP $t1, 0($sp)`, `SIP $t2, 0($sp)`), assemble, and run to test the custom instructions.
