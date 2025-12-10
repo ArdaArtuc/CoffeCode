@@ -1,0 +1,19 @@
+package coffee.mips.instructions;
+
+import mars.*;
+import mars.mips.instructions.*;
+import mars.mips.hardware.*;
+import mars.util.*;
+
+public class BeansInstruction extends BasicInstruction {
+    public BeansInstruction(){
+        super("BEANS $d, imm", "Load bean strength: rd = imm * 10", BasicInstructionFormat.I_FORMAT, "000011 00000 ddddd immediate");
+
+new SimulationCode(){
+public void simulate(ProgramStatement statement) throws ProcessingException{
+int[] ops = statement.getOperands();
+RegisterFile.updateRegister(ops[0], ops[1] * 10);
+}
+        };
+    }
+    }
